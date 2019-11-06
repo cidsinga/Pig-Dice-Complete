@@ -9,16 +9,30 @@ function Player(name) {
 
 function Game() {
   this.players = [];
-  this.isOver = false;
+  this.isOver = true;
   this.winner = null;
   this.currentPlayer = 0;
   this.turnScore = 0;
   this.lastRoll = 0;
 }
 
+Game.prototype.compTurn = function () {
+  var computerPlayer = this.players[this.currentPlayer];
+  var rolledOne = false;
+  while (!rolledOne && this.turnScore < 9 && !this.isOver) {
+    if (computerPlayer.score >= 100) {
+      return null;
+    }
+    rolledOne = game.takeTurn(computerPlayer);
+  }
+  game.endTurn(computerPlayer);
+};
+
 Game.prototype.nextPlayer = function () {
   if (this.isOver) {
     console.log("WINNER!");
+    this.turnScore = 0;
+    this.currentPlayer = 0;
   } else {
     if (this.currentPlayer === this.players.length - 1) {
       this.currentPlayer = 0;
@@ -26,7 +40,9 @@ Game.prototype.nextPlayer = function () {
       this.currentPlayer++;
     }
   }
-
+  if (this.players[this.currentPlayer].name === "COMP") {
+    this.compTurn();
+  }
 };
 
 Game.prototype.takeTurn = function (player) {
@@ -47,9 +63,10 @@ Game.prototype.endTurn = function (player) {
   console.log(`${player.name} ended turn and got ${this.turnScore}`);
   player.score += this.turnScore;
   this.turnScore = 0;
-  if (player.score >= 20) {
+  if (player.score >= 100) {
     this.winner = player;
     this.isOver = true;
+    this.turnScore = 0;
   }
   this.nextPlayer();
   return null;
@@ -105,7 +122,9 @@ $(document).ready(function() {
     var playerName = game.players[game.currentPlayer].name;
     if (game.isOver) {
       alert(`${game.winner.name} WON!!!`);
-      game = new Game();
+      $(".start").fadeIn();
+      $(".play").hide();
+      $(".running-totals").hide();
     }
     $(".running-totals").text('');
     var currentScores = buildCurrentScore();
@@ -133,6 +152,7 @@ $(document).ready(function() {
     if (newPlayerName) {
       buildPlayer(newPlayerName);
     }
+    game.isOver = false;
     $(".start").hide();
     $(".play").fadeIn();
     $(".running-totals").fadeIn();
