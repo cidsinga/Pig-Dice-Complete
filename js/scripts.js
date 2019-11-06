@@ -87,11 +87,11 @@ Game.prototype.getScores = function () {
 };
 
 
-var player1 = new Player("Sam");
-var player2 = new Player("Sue");
+// var player1 = new Player("Sam");
+// var player2 = new Player("Sue");
 var game = new Game();
-game.players.push(player1, player2);
-console.log(game);
+// game.players.push(player1, player2);
+// console.log(game);
 
 
 
