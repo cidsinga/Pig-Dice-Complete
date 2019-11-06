@@ -1,0 +1,50 @@
+.play, #go {
+  display: none;
+}
+
+.main {
+  padding-top: 40px;
+}
+
+.start, .play {
+  min-height: 300px;
+  background-color: #355C7D;
+}
+
+.play {
+  padding-top: 90px;
+}
+
+.new-player {
+  margin-top: 90px;
+}
+
+#nameInput {
+  margin: 12px;
+}
+
+.header {
+  background-color: #355C7D;
+
+}
+
+body {
+  background-color: #C06C84;
+  text-align: center;
+  color: #dadae3;
+}
+
+.lastRoll {
+  padding: 40px;
+}
+
+.running-totals {
+  display: none;
+  background-color: #2A363B;
+  margin-bottom: 35px;
+  padding: 12px;
+}
+
+p {
+  margin: 0;
+}

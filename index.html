@@ -5,13 +5,35 @@
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/jquery-3.4.1.js" type="text/javascript"></script>
     <script src="js/scripts.js" type="text/javascript"></script>
-    <title>TITLE</title>
+    <title>Pig Dice</title>
   </head>
   <body>
     <div class="container main">
       <div class="jumbotron header">
-        <h1>HEADING</h1>
-        <h3>SUBHEADING</h3>
+        <h1>Pig Dice</h1>
+        <h3>A game of skill... or not.</h3>
+
+
+      </div>
+      <div class="card start">
+        <form class="new-player">
+          <input id="nameInput" type="text" name="name" class="form-control-lg" placeholder="Enter your name">
+          <br>
+          <button id="addNext" class="btn btn-dark" type="button" name="nextPlayer">Add Next Player</button>
+          <button id="go" class="btn btn-dark" type="button" name="begin">Let's Play!</button>
+        </form>
+      </div>
+      <div class="card running-totals">
+
+      </div>
+      <div class="card play">
+        <h3>Active Player: <span id="activePlayerName"></span></h3>
+        <h4>Current Turn Score: <span id="turnScore">0</span> </h4>
+        <button id="roll" class="btn btn-dark btn-lg" type="button" name="roll">Roll</button>
+        <button id="hold" class="btn btn-dark btn-lg" type="button" name="roll">Hold</button>
+      </div>
+      <div class="lastRoll">
+        <img src="img/6.png" alt="Dice 6">
       </div>
     </div>
   </body>
