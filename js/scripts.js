@@ -152,11 +152,15 @@ $(document).ready(function() {
     if (newPlayerName) {
       buildPlayer(newPlayerName);
     }
-    game.isOver = false;
-    $(".start").hide();
-    $(".play").fadeIn();
-    $(".running-totals").fadeIn();
-    refresh();
+    if (game.players.length > 1) {
+      game.isOver = false;
+      $(".start").hide();
+      $(".play").fadeIn();
+      $(".running-totals").fadeIn();
+      refresh();
+    } else {
+      alert("Please enter at least 2 players!")
+    }
   })
 
   $("#roll").click(function(){
